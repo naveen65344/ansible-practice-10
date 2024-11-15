@@ -1,8 +1,14 @@
-- name: ansible module to install mysql
+- name: Install MySQL Server
   hosts: mysql
   become: yes
   tasks:
-   - name: installing mysql
-     ansible.builtin.package:
-       name: mysql
-       state: present
+    - name: Install MySQL server (RHEL-based)
+      ansible.builtin.package:
+        name: mysql-server  # For RHEL/CentOS/Fedora
+        state: present
+
+    - name: Install MySQL server (Debian-based)
+      ansible.builtin.package:
+        name: mysql-server  # For Ubuntu/Debian systems
+        state: present
+      when: ansible_os_family == "Debian"
