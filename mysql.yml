@@ -1,14 +1,39 @@
-- name: Install MySQL Server
+
+- name: Install MySQL server
   hosts: mysql
   become: yes
+
   tasks:
-    - name: Install MySQL server (RHEL-based)
+    - name: Install MySQL server
       ansible.builtin.package:
-        name: mysql-server  # For RHEL/CentOS/Fedora
+        name: mysql-server
+        state: present
+    - name: Install PyMySQL
+      ansible.builtin.pip:
+        name: PyMySQL
         state: present
 
-    - name: Install MySQL server (Debian-based)
-      ansible.builtin.package:
-        name: mysql-server  # For Ubuntu/Debian systems
-        state: present
-      when: ansible_os_family == "Debian"
+    - name: Enable mysqld service
+      ansible.builtin.service:
+        name: mysqld
+        enabled: yes
+        state: started 
+
+    
+             
+
+    - name: Get MySQL server version
+      community.mysql.mysql_info:
+        login_user: root
+        login_password: ExpenseApp@1
+        login_host: mysql.daws83s.shop
+      ignore_errors: true  
+      register: mysql_info
+
+    - name: printing
+      ansible.builtin.debug:
+        msg: "{{mysql_info}}"   
+
+    - name: password adding
+      ansible.builtin.command:   "mysql_secure_installation --set-root-pass ExpenseApp@1"
+      when: mysql_info.failed is true 
