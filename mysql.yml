@@ -1,31 +1,20 @@
-- name: installing mysl server
+---
+- name: Installing MySQL server
   hosts: mysql
   become: yes
   tasks:
-   - name: installing mysql-server
-     ansible.builtin.package:
-       name: mysql-server
-       state: present
+    - name: Installing mysql-server
+      ansible.builtin.package:
+        name: mysql-server
+        state: present
 
-   - name: starting service
-     ansible.builtin.service:
-       name: mysqld
-       state: started
-       enabled: yes
+    - name: Starting service
+      ansible.builtin.service:
+        name: mysqld
+        state: started
+        enabled: yes
 
     - name: Install PyMySQL
       ansible.builtin.pip:
         name: PyMySQL
         state: present
-          
-
-   
-        
-      
-      
-
-
-
-
-   
-      
