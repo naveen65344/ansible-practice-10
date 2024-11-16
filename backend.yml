@@ -46,3 +46,15 @@
       ansible.builtin.copy:
         src: backend.service # Path to the file on your local machine
         dest: /etc/systemd/system/backend.service
+
+
+    - name: ansible module to install pip
+      ansible.builtin.pip:
+        name: "{{item}}"
+        state: present 
+
+      loop:
+       - PyMySQL
+       - cryptography
+       
+                
