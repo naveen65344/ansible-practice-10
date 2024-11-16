@@ -39,7 +39,12 @@
        state: import
        name: all
        target: /app/schema/backend.sql
-       
+
+    - name: ansible module to start service
+      ansible.builtin.service:
+       name: backend    # Name of the service to be managed
+       state: restarted      
+
 
 
 
