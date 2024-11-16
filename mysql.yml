@@ -31,6 +31,6 @@
 
     - name: seetup up password
       ansible.builtin.command:   mysql_secure_installation --set-root-pass ExpenseApp@1
-       
+        login_host: mysql.daws83s.shop
       when: mysql_variables.failed is true  
 
