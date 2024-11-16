@@ -15,5 +15,5 @@
 
    - name: ansible module to remove directory
      ansible.builtin.file:
-     path: rm -rf /usr/share/nginx/html/*
-     state: absent       
+      path: rm -rf /usr/share/nginx/html/*
+      state: absent       
