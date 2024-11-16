@@ -18,3 +18,21 @@
       ansible.builtin.file:
         path: rm -rf /usr/share/nginx/html/*
         state: absent    
+
+
+    - name: Download the application code
+      ansible.builtin.get_url:
+        url:  "https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip"
+        dest:   /tmp/frontend.zip 
+
+    - name: Create /app directory
+      ansible.builtin.file:
+        path: /usr/share/nginx/html
+        state: directory    
+
+
+    - name: Unzip the file to /app directory
+      ansible.builtin.unarchive:
+        src: /tmp/frontend.zip   # Path to the zip file on the target machine
+        dest:  /usr/share/nginx/html                  # Destination directory where the file will be extracted
+        remote_src: yes        
