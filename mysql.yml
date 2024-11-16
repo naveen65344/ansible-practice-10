@@ -14,7 +14,7 @@
        enabled: yes
 
    - name: Get MySQL configuration variables
-      community.mysql.mysql_info:
+     community.mysql.mysql_info:
         login_user: root
         login_password: "ExpenseApp@1"
          
