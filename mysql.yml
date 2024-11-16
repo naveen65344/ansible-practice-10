@@ -1,4 +1,3 @@
----
 - name: Installing MySQL server
   hosts: mysql
   become: yes
@@ -8,7 +7,7 @@
         name: mysql-server
         state: present
 
-    - name: Starting service
+    - name: Starting MySQL service
       ansible.builtin.service:
         name: mysqld
         state: started
@@ -19,18 +18,21 @@
         name: PyMySQL
         state: present
 
-
     - name: Get MySQL configuration variables
       community.mysql.mysql_info:
         login_user: root
         login_password: "ExpenseApp@1"
         login_host: mysql.daws83s.shop
-        
       register: mysql_variables
-      ignore_errors: yes     
+      ignore_errors: yes
 
-    - name: seetup up password
-      ansible.builtin.command:   mysql_secure_installation --set-root-pass ExpenseApp@1
+    - name: Set MySQL root password if necessary
+      community.mysql.mysql_user:
+        name: root
+        password: "ExpenseApp@1"
+        
+        login_user: root
+        login_password: "ExpenseApp@1"
         login_host: mysql.daws83s.shop
-      when: mysql_variables.failed is true  
-
+        state: present
+      when: mysql_variables.failed is true
