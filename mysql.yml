@@ -12,6 +12,11 @@
        name: mysqld
        state: started
        enabled: yes
+   - name: ansible to install python dependencies
+     ansible.builtin.pip
+      name: PyMySQL
+      state: present
+          
 
    - name: Get MySQL configuration variables
      community.mysql.mysql_info:
