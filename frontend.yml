@@ -46,8 +46,4 @@
       ansible.builtin.command:  systemctl restart nginx 
 
 
-    - name: daemon reload
-      ansible.builtin.systemd_service:
-       daemon_reload: true
-       state: restarted
-       name: frontend    
+     

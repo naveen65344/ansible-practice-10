@@ -66,6 +66,7 @@
         login_password: ExpenseApp@1
         login_host: mysql.daws83s.shop
 
-    - name: Run systemctl daemon-reload
-      ansible.builtin.command:
-        cmd: systemctl daemon-reload
+    - name: Ensure the service is started
+      ansible.builtin.systemd:
+        name: backend
+        state: started 
