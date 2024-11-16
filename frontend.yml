@@ -34,5 +34,10 @@
     - name: Unzip the file to /app directory
       ansible.builtin.unarchive:
         src: /tmp/frontend.zip   # Path to the zip file on the target machine
-        dest:  /usr/share/nginx/html                  # Destination directory where the file will be extracted
-        remote_src: yes        
+        dest:  /etc/nginx/default.d/expense.conf                  # Destination directory where the file will be extracted
+        remote_src: yes     
+
+    - name: Copy frontend service 
+      ansible.builtin.copy:
+        src: expense.conf
+        dest: /etc/systemd/system/backend.service         
