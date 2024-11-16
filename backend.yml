@@ -17,5 +17,9 @@
     - name: Ensure the user "expense" exists
       ansible.builtin.user:
         name: expense               # The username you want to create
-        state: present         
-    
+        state: present     
+
+    - name: Ensure the directory /opt/expense exists
+      ansible.builtin.file:
+        path: /app     # The directory you want to create
+        state: directory   
