@@ -17,7 +17,13 @@
     - name: Create expense user
       ansible.builtin.user:
         name: expense
-        state: present    
+        state: present   
+
+
+    - name: Ensure the directory /app exists
+      ansible.builtin.file:
+        path: /app
+        state: directory     
 
 
          
