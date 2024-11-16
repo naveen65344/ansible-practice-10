@@ -36,4 +36,9 @@
         dest:  /app            # Directory to extract to
         remote_src: yes  
 
+    - name: ansible module to install dependencies
+      ansible.builtin.command: npm install
+       chdir: /app
+
+
          
