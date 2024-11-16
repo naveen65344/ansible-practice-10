@@ -27,3 +27,10 @@
      ansible.builtin.get_url:
         url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip # URL to the code
         dest: /tmp/frontend.zip  #    
+
+
+   -  name: Extract code to destination directory
+      ansible.builtin.unarchive:
+        src:  /tmp/frontend.zip     # Path to the archive on the control machine or remote host
+        dest:   cd /usr/share/nginx/html              # Destination directory on the remote host
+        remote_src: yes        
