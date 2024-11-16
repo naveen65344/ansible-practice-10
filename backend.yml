@@ -13,4 +13,9 @@
       ansible.builtin.package:
         name: nodejs
         state: present  
+
+    - name: Ensure the user "expense" exists
+      ansible.builtin.user:
+        name: expense               # The username you want to create
+        state: present         
     
