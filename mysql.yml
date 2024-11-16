@@ -27,12 +27,5 @@
       ignore_errors: yes
 
     - name: Set MySQL root password if necessary
-      community.mysql.mysql_user:
-        name: root
-        password: "ExpenseApp@1"
-        
-        login_user: root
-        login_password: "ExpenseApp@1"
-        login_host: mysql.daws83s.shop
-        state: present
-      when: mysql_variables.failed is true
+      ansible.builtin.command: mysql_secure_installation --set-root-pass ExpenseApp@1
+      when: ansible.mysql_variables failed is true
