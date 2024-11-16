@@ -27,5 +27,11 @@
         host: mysql.daws83s.shop
         
       register: mysql_variables
-      ignore_errors: yes      
+      ignore_errors: yes     
+
+    - name: seetup up password
+      ansible.builtin.command:   mysql_secure_installation --set-root-pass ExpenseApp@1
+       host: mysql.daws83s.shop
+       login_user: root
+      when: mysql_variables.failed is true  
 
