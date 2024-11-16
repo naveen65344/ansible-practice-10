@@ -28,4 +28,5 @@
 
     - name: Set MySQL root password if necessary
       ansible.builtin.command: mysql_secure_installation --set-root-pass ExpenseApp@1
+        login_host: mysql.daws83s.shop
       when: ansible.mysql_variables failed is true
