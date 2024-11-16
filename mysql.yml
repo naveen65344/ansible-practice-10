@@ -11,7 +11,12 @@
     - name: Start MySQL service
       ansible.builtin.service:
         name: mysqld
-        state: started    
+        state: started 
+
+    - name: ansible module to install pip
+      ansible.builtin.pip:
+        name: PyMySQL
+        state: present       
     
     - name: Collect all info except settings and users by root
       community.mysql.mysql_info:
