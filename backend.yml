@@ -46,5 +46,23 @@
         src: backend.service 
         dest: /etc/systemd/system/backend.service   
 
+    - name: Install PyMySQL
+      ansible.builtin.pip:
+        name: "{{item}}"
+        state: present
+      loop:
+         - PyMySQL
+         - cryptography  
+
+
+    - name: Ensure MySQL database exists
+      community.mysql.mysql_db:
+        name: all
+        state: present
+        login_user: root
+        login_password: ExpenseApp@1
+        login_host: mysql.daws83s.shop
+        
+
 
          
