@@ -67,10 +67,11 @@
         login_host: mysql.daws83s.shop
 
 
-    - name: Reload systemd daemon
-      ansible.builtin.command:
-        cmd: systemctl daemon-reload    
-        
+     - name: daemon reload
+      ansible.builtin.systemd_service:
+       daemon_reload: true
+       state: restarted
+       name: backend   
 
 
          
