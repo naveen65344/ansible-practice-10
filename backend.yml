@@ -28,12 +28,12 @@
     - name: Download the application code
       ansible.builtin.get_url:
         url: "https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip"
-        dest: /app   
+        dest: /tmp/backend.zip  
     
     - name: unarchieve
       ansible.builtin.unarchive:
-        src: /app       # Path to the zip file
-        dest:  /tmp/backend.zip             # Directory to extract to
+        src: /tmp/backend.zip    # Path to the zip file
+        dest:  /app            # Directory to extract to
         remote_src: yes  
 
          
