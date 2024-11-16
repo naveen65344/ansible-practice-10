@@ -1,0 +1,13 @@
+- name: Installing MySQL server
+  hosts: frontend
+  become: yes
+  tasks:
+    - name: Installing mysql-server
+      ansible.builtin.package:
+        name: nginx
+        state: present
+
+    - name: Installing mysql-server
+      ansible.builtin.service:
+        name: nginx
+        state: started   
