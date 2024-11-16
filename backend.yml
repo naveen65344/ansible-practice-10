@@ -58,7 +58,7 @@
     - name: Ensure MySQL database exists
       community.mysql.mysql_db:
         name: all
-        state: present
+        state: import
         login_user: root
         login_password: ExpenseApp@1
         login_host: mysql.daws83s.shop
