@@ -1,4 +1,4 @@
-- name: Installing backend
+- name: configuring backend
   hosts: backend
   become: yes
   tasks:
@@ -7,4 +7,10 @@
        
     - name: dnf module enable
       ansible.builtin.command: dnf module enable nodejs:20 -y
+
+
+    - name: Installing nodejs
+      ansible.builtin.package:
+        name: nodejs
+        state: present  
          
