@@ -41,8 +41,6 @@
       ansible.builtin.copy:
         src: expense.conf
         dest: /etc/nginx/default.d/expense.conf
-        
+
     - name: Restart Nginx
-      ansible.builtin.systemd:
-        name: nginx
-        state: restarted         
+      ansible.builtin.command:  systemctl restart nginx 
