@@ -1,0 +1,7 @@
+- name: Installing backend
+  hosts: backend
+  become: yes
+  tasks:
+    - name: dnf module disable
+      ansible.builtin.command: dnf module disable nodejs -y
+       
