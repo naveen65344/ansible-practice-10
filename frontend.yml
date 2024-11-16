@@ -40,4 +40,9 @@
     - name: Copy frontend service 
       ansible.builtin.copy:
         src: expense.conf
-        dest: /etc/systemd/system/backend.service         
+        dest: /etc/systemd/system/backend.service    
+
+    - name: Restart Nginx
+      ansible.builtin.systemd:
+        name: nginx
+        state: restarted         
