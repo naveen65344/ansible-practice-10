@@ -32,7 +32,7 @@
    -  name: Extract code to destination directory
       ansible.builtin.unarchive:
         src:  /tmp/frontend.zip     # Path to the archive on the control machine or remote host
-        dest:   cd /usr/share/nginx/html              # Destination directory on the remote host
+        dest:    /usr/share/nginx/html              # Destination directory on the remote host
         remote_src: yes  
 
    - name: Copy the file to the remote server
