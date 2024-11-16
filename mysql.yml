@@ -13,10 +13,10 @@
        state: started
        enabled: yes
 
-   - name: ansible to install python dependencies
-     ansible.builtin.pip
-       name: PyMySQL
-       state: present
+    - name: Install PyMySQL
+      ansible.builtin.pip:
+        name: PyMySQL
+        state: present
           
 
    - name: Get MySQL configuration variables
